@@ -1,33 +1,6 @@
 <script>
-import axios from 'axios';
-import ProjectCard from './components/ProjectCard.vue'
-
 export default {
-  name: 'App',
-
-  components: {
-    ProjectCard,
-  },
-  data() {
-
-    return {
-      baseUrl: 'http://127.0.0.1:8000/',
-      projectApi: 'api/project',
-      projects: []
-    }
-
-  },
-
-  mounted() {
-    axios.get(this.baseUrl + this.projectApi)
-      .then(response => {
-        console.log(response);
-        this.projects = response.data.result.data
-      }).catch(err => {
-        console.error(err);
-      })
-  }
-
+  name: 'App'
 }
 </script>
 
@@ -44,14 +17,16 @@ export default {
         <div class="collapse navbar-collapse" id="collapsibleNavId">
           <ul class="navbar-nav me-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="#" aria-current="page">Home<span
-                  class="visually-hidden">(current)</span></a>
+              <router-link class="nav-link" to="/">Home</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About Me</a>
+              <router-link class="nav-link" to="/about">About Me</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact 📞</a>
+              <router-link class="nav-link" to="/contact">Contacts 📞</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/projects">Projects 🚀</router-link>
             </li>
           </ul>
           <form class="d-flex my-2 my-lg-0">
@@ -63,24 +38,13 @@ export default {
     </nav>
 
   </header>
+
+
   <main>
-    <div class="p-5 mb-4 bg-light rounded-3">
-      <div class="container">
-        <div class="container-fluid py-5">
-          <h1 class="display-5 fw-bold">Show my projects</h1>
-          <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in
-            previous
-            versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-          <button class="btn btn-primary btn-lg" type="button">View all projects</button>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row flex-row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 my-3">
-        <ProjectCard :project="project" :baseUrl="baseUrl" v-for="project in this.projects" />
-      </div>
-    </div>
+    <router-view></router-view>
   </main>
+
+
   <footer>
     <div class="bg-dark">
       <div class="d-flex text-white justify-content-around p-4">
