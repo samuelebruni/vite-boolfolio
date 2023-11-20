@@ -1,3 +1,8 @@
+<script>
+export default {
+    name: 'ContactsView'
+}
+</script>
 <template>
     <div>
         <div class="p-5 mb-4 bg-dark text-light">
@@ -9,7 +14,7 @@
         </div>
 
 
-        <div class="container">
+        <div class="container my-5">
             <form action="">
                 <div class="mb-3">
                     <label for="name" class="form-label text-uppercase">Name</label>
@@ -37,7 +42,7 @@
                 </div>
 
 
-                <button type="submit" class="btn btn-primary">Send</button>
+                <button type="submit" class="btn btn-primary mb-3">Send</button>
 
             </form>
         </div>
@@ -45,10 +50,5 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: 'ContactsView'
-}
-</script>
 
 <style lang="scss" scoped></style>

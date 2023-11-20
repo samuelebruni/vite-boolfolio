@@ -1,3 +1,35 @@
+<script>
+import axios from 'axios';
+export default {
+    name: 'HomeView',
+    data() {
+        return {
+            baseUrl: 'http://127.0.0.1:8000/',
+            projectApi: 'api/project/latest',
+            projects: [],
+
+        }
+    },
+    methods: {
+        getProject() {
+            const url = this.baseUrl + this.projectApi;
+            axios
+                .get(url)
+                .then(response => {
+                    console.log(response);
+                    this.projects = response.data.result
+
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        }
+    },
+    mounted() {
+        this.getProject();
+    }
+}
+</script>
 <template>
     <div>
         <div class="p-5 mb-4 bg-dark text-light">
@@ -87,38 +119,5 @@
 
     </div>
 </template>
-
-<script>
-import axios from 'axios';
-export default {
-    name: 'HomeView',
-    data() {
-        return {
-            baseUrl: 'http://127.0.0.1:8000/',
-            projectApi: 'api/project/latest',
-            projects: [],
-
-        }
-    },
-    methods: {
-        getProject() {
-            const url = this.baseUrl + this.projectApi;
-            axios
-                .get(url)
-                .then(response => {
-                    console.log(response);
-                    this.posts = response.data.result
-
-                })
-                .catch(err => {
-                    console.error(err);
-                })
-        }
-    },
-    mounted() {
-        this.getProject();
-    }
-}
-</script>
 
 <style lang="scss" scoped></style>

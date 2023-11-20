@@ -32,7 +32,7 @@ export default {
 </script>
 
 <template>
-  <section v-if="projects" class="d-flex">
+  <section v-if="projects" class="d-flex my-5">
     <div class="col-3" v-for="project in projects.data">
       <div class="card shadow" style="width: 300px; height: 600px;">
         <img :src="baseUrl + 'storage/' + project.cover_image" class="card-img-top" style="height: 300px">
