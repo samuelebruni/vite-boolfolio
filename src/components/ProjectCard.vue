@@ -35,7 +35,7 @@ export default {
   <section v-if="projects" class="d-flex my-5">
     <div class="col-3" v-for="project in projects.data">
       <div class="card shadow" style="width: 300px; height: 600px;">
-        <img :src="baseUrl + 'storage/' + project.cover_image" class="card-img-top" style="height: 300px">
+        <img :src="baseUrl + 'storage/' + project.cover_image" class="card-img-top" style="height: 250px">
         <div class="card-body">
           <div class="d-flex justify-content-center mb-1">
             <p class="card-text text-center bg-primary badge">{{ project.type.name }}</p>
@@ -49,9 +49,13 @@ export default {
                 {{ technology.name }}
               </li>
             </div>
-
+            <div class="border-top my-2 text-center">
+              <router-link :to="{ name: 'project', params: { slug: project.slug } }" class="btn btn-danger mt-3">View
+                Post</router-link>
+            </div>
           </ul>
         </div>
+
       </div>
     </div>
   </section>

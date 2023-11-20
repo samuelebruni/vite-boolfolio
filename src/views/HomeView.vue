@@ -1,7 +1,11 @@
 <script>
 import axios from 'axios';
+import ProjectCard from '../components/ProjectCard.vue';
 export default {
     name: 'HomeView',
+    components: {
+        ProjectCard
+    },
     data() {
         return {
             baseUrl: 'http://127.0.0.1:8000/',
@@ -34,35 +38,25 @@ export default {
     <div>
         <div class="p-5 mb-4 bg-dark text-light">
             <div class="container py-5">
-                <h1 class="display-5 fw-bold">Welcome!</h1>
-                <p class="col-md-8 fs-4">Find top news from top authors</p>
-                <button class="btn btn-primary btn-lg" type="button">Find out more</button>
+                <h1 class="display-5 fw-bold">Welcome in my Portfolio!</h1>
+                <p class="col-md-8 fs-4">On this portal you can find all the projects developed by me. For each of them you
+                    will have the opportunity to specifically view all the features and technologies used.</p>
+                <button class="btn btn-primary btn-lg" type="button">See all projects 🚀</button>
             </div>
         </div>
 
         <section class="latest_projects" v-if="projects">
             <div class="container">
-                <h2>Latest Articles</h2>
-                <div class="row row-cols-1 row-cols-sm-3">
-                    <div class="col" v-for="project in projects">
-                        <div class="card">
-                            <img :src="baseUrl + 'storage/' + project.cover_image" alt="">
-
-                            <div class="card-body">
-                                <h4 class="card-title">{{ project.title }}</h4>
-                                <p class="card-text">
-                                    {{ project.description }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                <h2>Latest Projects 💫</h2>
+                <div class="row row-cols-1 mb-5">
+                    <ProjectCard />
                 </div>
             </div>
         </section>
 
 
 
-        <section class="my-5">
+        <section class=" my-5">
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -71,16 +65,20 @@ export default {
                     <div class="col">
                         <h3>Company Name</h3>
                         <p class="lead">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex sed quas laborum saepe? Cupiditate
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex sed quas laborum saepe?
+                            Cupiditate
                             quidem
-                            molestias facere optio quos hic officiis totam, quis est dolores ab quo eligendi repellat
+                            molestias facere optio quos hic officiis totam, quis est dolores ab quo eligendi
+                            repellat
                             repellendus!
                         </p>
 
                         <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium amet et adipisci, error,
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium amet et adipisci,
+                            error,
                             consequatur
-                            nobis neque debitis sequi expedita at autem, magni cum numquam officiis vel laboriosam saepe sed
+                            nobis neque debitis sequi expedita at autem, magni cum numquam officiis vel laboriosam
+                            saepe sed
                             repudiandae?
                         </p>
                         <a href="#" class="btn btn-block btn-primary">
