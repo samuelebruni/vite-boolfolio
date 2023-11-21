@@ -50,8 +50,8 @@ export default {
               </li>
             </div>
             <div class="border-top my-2 text-center">
-              <router-link :to="{ name: 'project', params: { slug: project.slug } }" class="btn btn-danger mt-3">View
-                Post</router-link>
+              <router-link :to="{ name: 'project', params: { slug: project.slug } }" class="btn btn-danger mt-3">Show
+                Project 🚀</router-link>
             </div>
           </ul>
         </div>
