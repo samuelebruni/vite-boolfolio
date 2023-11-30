@@ -1,6 +1,37 @@
 <script>
+import axios from 'axios'
 export default {
-    name: 'ContactsView'
+    name: 'ContactsView',
+    data() {
+        return {
+            loading: false,
+            baseUrl: 'http://127.0.0.1:8000/',
+            contactsApi: 'api/contacts',
+            name: '',
+            email: '',
+            phone: '',
+            message: '',
+
+        }
+    },
+    methods: {
+        sendForm() {
+            const payload = {
+                name: this.name,
+                email: this.email,
+                phone: this.phone,
+                message: this.message,
+            };
+            console.log(payload);
+            axios.post(this.baseUrl + this.contactsApi, payload)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.error(error.message);
+                })
+        }
+    }
 }
 </script>
 <template>
@@ -15,30 +46,30 @@ export default {
 
 
         <div class="container my-5">
-            <form action="">
+            <form action="" v-on:submit.prevent="sendForm()">
                 <div class="mb-3">
                     <label for="name" class="form-label text-uppercase">Name</label>
                     <input type="text" name="name" id="name" class="form-control" placeholder="Elon Musk"
-                        aria-describedby="nameHelper">
+                        aria-describedby="nameHelper" v-model="name">
                     <small id="nameHelper" class="text-muted">Type your name</small>
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label  text-uppercase">phone</label>
                     <input type="tel" name="phone" id="phone" class="form-control" placeholder="123456"
-                        aria-describedby="phoneHelper">
+                        aria-describedby="phoneHelper" v-model="phone">
                     <small id="phoneHelper" class="text-muted">Type your phone</small>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label text-uppercase">email</label>
                     <input type="text" name="email" id="email" class="form-control" placeholder="elon@musk.com"
-                        aria-describedby="emailHelper">
+                        aria-describedby="emailHelper" v-model="email">
                     <small id="emailHelper" class="text-muted">Type your email</small>
                 </div>
 
                 <div class="mb-3">
                     <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" name="message" id="message" rows="3"
-                        placeholder="Your message here..."></textarea>
+                    <textarea class="form-control" name="message" id="message" rows="3" placeholder="Your message here..."
+                        v-model="message"></textarea>
                 </div>
 
 
